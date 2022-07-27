@@ -1,0 +1,7 @@
+.score-input {
+  padding: 1em;
+}
+
+.score-input label input {
+  margin: 0.5em;
+}

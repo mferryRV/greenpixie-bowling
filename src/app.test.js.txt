@@ -1,0 +1,8 @@
+import { render, screen } from "@testing-library/react";
+import App from "./app";
+
+test("renders a title tag", () => {
+  render(<App />);
+  const h1 = screen.getByText(/Let's Go Bowling/i);
+  expect(h1).toBeInTheDocument();
+});
