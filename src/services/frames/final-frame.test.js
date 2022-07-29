@@ -29,7 +29,7 @@ test("No pins > 10", () => {
     expect(true).toBe(false);
   } catch (e) {
     // eslint-disable-next-line
-    expect(e.message).toBe("Cannot roll more pins than standing");
+    expect(e.message).toBe("Pins must be a number between 0 and 10");
   }
 });
 
@@ -39,7 +39,17 @@ test("No pins > standing", () => {
     expect(true).toBe(false);
   } catch (e) {
     // eslint-disable-next-line
-    expect(e.message).toBe("Cannot roll more pins than standing");
+    expect(e.message).toBe("Pins must be a number between 0 and 8");
+  }
+});
+
+test("No negative pins", () => {
+  try {
+    testRolls([-1]);
+    expect(true).toBe(false);
+  } catch (e) {
+    // eslint-disable-next-line
+    expect(e.message).toBe("Pins must be a number between 0 and 10");
   }
 });
 
