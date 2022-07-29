@@ -42,13 +42,12 @@ class BowlingService {
 
   // Handle new rolls
   bowl(pins) {
-    // @TODO: Move alerting to the client
     if (this.#isOver) {
-      alert("Game over! Refresh to play again.");
-      return;
-    } else if (isNaN(pins) || pins > this.standingPins) {
-      alert(`Pins must be a number ${this.standingPins} or less`);
-      return;
+      throw new Error("Game over! Refresh to play again.");
+    } else if (isNaN(pins) || pins > this.getStandingPins()) {
+      throw new Error(
+        `Pins must be a number ${this.getStandingPins()} or less`
+      );
     }
 
     // Store pin information

@@ -36,10 +36,9 @@ const Scoreboard = ({ regularFrames, finalFrame, playerName, score }) => (
       <FrameDisplay frame={frame} idx={i} RollComponent={RegularRolls} />
     ))}
     <FrameDisplay frame={finalFrame} idx={9} RollComponent={FinalFrameRolls} />
-    {/* @TODO: Fix naming convention around "final" to "total" */}
-    <div className="scoreboard-block final">
+    <div className="scoreboard-block total">
       <div className="heading">Total</div>
-      <div className="final-score">{score}</div>
+      <div className="total-score">{score}</div>
     </div>
   </div>
 );
