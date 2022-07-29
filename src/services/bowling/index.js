@@ -44,9 +44,9 @@ class BowlingService {
   bowl(pins) {
     if (this.#isOver) {
       throw new Error("Game over! Refresh to play again.");
-    } else if (isNaN(pins) || pins > this.getStandingPins()) {
+    } else if (isNaN(pins) || pins > this.getStandingPins() || 0 > pins) {
       throw new Error(
-        `Pins must be a number ${this.getStandingPins()} or less`
+        `Pins must be a number between 0 and ${this.getStandingPins()}`
       );
     }
 

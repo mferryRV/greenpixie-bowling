@@ -21,8 +21,10 @@ class FinalFrame {
   bowl(pins) {
     if (this.#standingPins === 0) {
       throw new Error("Cannot bowl in completed frame");
-    } else if (this.#standingPins < pins) {
-      throw new Error("Cannot roll more pins than standing");
+    } else if (isNaN(pins) || pins > this.#standingPins || 0 > pins) {
+      throw new Error(
+        `Pins must be a number between 0 and ${this.#standingPins}`
+      );
     }
 
     if (this.#rollPointer === null) {

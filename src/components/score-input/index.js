@@ -8,6 +8,7 @@ const ScoreInput = ({ bowl, standingPins }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
+      // @TODO: Improve parsing to throw errors on fractions or decimals
       bowl(parseInt(pins));
     } catch (e) {
       alert(e.message);
