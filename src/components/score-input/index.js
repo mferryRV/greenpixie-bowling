@@ -2,18 +2,15 @@ import "./score-input.css";
 
 import { useState } from "react";
 
-const ScoreInput = ({ bowl }) => {
+const ScoreInput = ({ bowl, standingPins }) => {
   const [pins, setPins] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // @TODO: Move this logic to the BowlingService
     try {
-      const pinsInt = parseInt(pins);
-      if (isNaN(pinsInt)) throw new Error();
-      bowl(pinsInt);
+      bowl(parseInt(pins));
     } catch (e) {
-      alert("That's not an acceptable number of pins.");
+      alert(e.message);
     }
     setPins("");
   };
@@ -24,7 +21,8 @@ const ScoreInput = ({ bowl }) => {
         Pins:
         <input
           type="text"
-          value={pins} // @TODO: Add some kind of max: 8 language
+          value={pins}
+          placeholder={`Maximum is ${standingPins}`}
           onChange={(e) => setPins(e.target.value)}
         />
       </label>

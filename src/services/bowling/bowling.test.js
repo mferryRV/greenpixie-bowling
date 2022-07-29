@@ -6,6 +6,8 @@ test("creates a game with a .bowl() function", () => {
   expect(1).toBe(1);
 });
 
+// @TODO: UI tests
+
 // @TODO: Tests around successive strikes in the 8th and 9th frames
 // @TODO: "strike in 8th, 9th, 10th yields 30"
 // @TODO: "strike in 9th, 10th, 10th yields 30"

@@ -32,6 +32,10 @@ class BowlingService {
     }
   }
 
+  getRollNumber() {
+    return this.#rollIdx;
+  }
+
   getStandingPins() {
     return this.#getCurrentFrame().getStandingPins();
   }
@@ -75,10 +79,11 @@ class BowlingService {
   }
 
   displayRegularFrames() {
-    let runningTotal;
-    return this.#regularFrames.map((frame) => {
+    let runningTotal = 0;
+    return this.#regularFrames.map((frame, i) => {
       const frameScore = frame.getScore();
       runningTotal = frameScore !== null ? runningTotal + frameScore : null;
+      console.log("status", i, frame.displayRolls(), frame.getScore());
       return {
         rolls: frame.displayRolls(),
         score: runningTotal,
@@ -89,7 +94,7 @@ class BowlingService {
   displayFinalFrame() {
     return {
       rolls: this.#finalFrame.displayRolls(),
-      score: this.displayScore(),
+      score: this.#isOver ? this.displayScore() : null,
     };
   }
 }

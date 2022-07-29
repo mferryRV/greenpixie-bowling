@@ -71,6 +71,8 @@ class FinalFrame {
 
   // Provide data for UI
   displayRolls() {
+    if (this.#rollPointer === null) return [" ", " ", " "];
+
     let rolls = [];
     for (let i = 0; i < 3; i++) {
       const pins = this.#rollMap.get(this.#rollPointer + i);

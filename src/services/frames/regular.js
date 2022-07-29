@@ -77,6 +77,8 @@ class RegularFrame {
 
   // Provide data for UI
   displayRolls() {
+    if (this.#rollPointer === null) return [" ", " "];
+
     let rolls = [];
     if (this.#getTotalPins() === 10 && this.#rolls === 1) {
       // Strike
