@@ -11,13 +11,14 @@ test("records score", () => {
   expect(game.frames[0][0]).toBe(1);
 });
 
+// @TODO: What should be a game test? What should be a frame test?
 test("incomplete frames have no score", () => {
   const game = new BowlingService();
   game.bowl(1);
   expect(game.getFrameScore(0)).toBe(null);
 });
 
-// Frame and roll iteration tests
+// Regular frame iteration tests
 test("two rolls in one frame", () => {
   const game = new BowlingService();
   [1, 1].forEach((p) => game.bowl(p));
@@ -36,6 +37,9 @@ test("strike moves to next frame", () => {
   expect(game.getFrameScore(1)).toBe(4);
 });
 
+// @TODO: "spare moves to next frame"
+
+// Final frame iteration tests
 test("tenth frame turkey", () => {
   const game = new BowlingService();
   for (let i = 0; i < 12; i++) {
@@ -44,6 +48,11 @@ test("tenth frame turkey", () => {
   expect(game.getFrameScore(9)).toBe(30);
 });
 
+// @TODO: "tenth frame strike and spare"
+// @TODO: "tenth frame spare and strike"
+// @TODO: "tenth frame ends in two bad rolls"
+
+
 // Strike and spare score tests
 test("strike has no immediate score", () => {
   const game = new BowlingService();
@@ -51,6 +60,7 @@ test("strike has no immediate score", () => {
   expect(game.getFrameScore(0)).toBe(null);
 });
 
+// @TODO: After two rolls
 test("strike score after next frame", () => {
   const game = new BowlingService();
   [10, 4, 4].forEach((p) => game.bowl(p));
@@ -69,7 +79,10 @@ test("strike scores 30 if next two frames are strikes", () => {
   expect(game.getFrameScore(0)).toBe(30);
 });
 
-// TODO: Tests around successive strikes in the 8th and 9th frames
+// @TODO: Tests around successive strikes in the 8th and 9th frames
+// @TODO: "strike in 8th, 9th, 10th yields 30"
+// @TODO: "strike in 9th, 10th, 10th yields 30"
+// @TODO: "four strikes from 9th yields 30"
 
 test("spare has no immediate score", () => {
   const game = new BowlingService();

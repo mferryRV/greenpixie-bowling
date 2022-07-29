@@ -7,9 +7,9 @@ const ScoreInput = ({ bowl }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // @TODO: Move this logic to the BowlingService
     try {
       const pinsInt = parseInt(pins);
-      // TODO: Check if pins <= pins available to knock down
       if (isNaN(pinsInt)) throw new Error();
       bowl(pinsInt);
     } catch (e) {
@@ -24,7 +24,7 @@ const ScoreInput = ({ bowl }) => {
         Pins:
         <input
           type="text"
-          value={pins}
+          value={pins} // @TODO: Add some kind of max: 8 language
           onChange={(e) => setPins(e.target.value)}
         />
       </label>

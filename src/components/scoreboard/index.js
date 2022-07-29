@@ -26,6 +26,7 @@ const Scoreboard = ({ frameScores, playerName, score }) => (
       <div className="heading">Name</div>
       <div className="player-name">{playerName}</div>
     </div>
+    {/* @TODO: Split frames into regular frames and final frame */}
     {frameScores.map((frame, i) => (
       <div className="scoreboard-block frame">
         <div className="heading">{i + 1}</div>
@@ -35,6 +36,7 @@ const Scoreboard = ({ frameScores, playerName, score }) => (
         </div>
       </div>
     ))}
+    {/* @TODO: Fix naming convention around "final" to "total" */}
     <div className="scoreboard-block final">
       <div className="heading">Total</div>
       <div className="final-score">{score}</div>

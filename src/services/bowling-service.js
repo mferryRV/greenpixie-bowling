@@ -56,8 +56,6 @@ class BowlingService {
     const currentFrame = this.frames[this.frameNum];
     currentFrame[this.rollNum] = numberPins;
 
-    console.log("status", this.frameNum, this.rollNum, numberPins);
-
     const frameScore = sumFrame(currentFrame);
 
     // Move indices
