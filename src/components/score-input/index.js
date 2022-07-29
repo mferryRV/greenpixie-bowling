@@ -2,18 +2,15 @@ import "./score-input.css";
 
 import { useState } from "react";
 
-const ScoreInput = ({ bowl }) => {
+const ScoreInput = ({ bowl, standingPins }) => {
   const [pins, setPins] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      const pinsInt = parseInt(pins);
-      // TODO: Check if pins <= pins available to knock down
-      if (isNaN(pinsInt)) throw new Error();
-      bowl(pinsInt);
+      bowl(parseInt(pins));
     } catch (e) {
-      alert("That's not an acceptable number of pins.");
+      alert(e.message);
     }
     setPins("");
   };
@@ -25,6 +22,7 @@ const ScoreInput = ({ bowl }) => {
         <input
           type="text"
           value={pins}
+          placeholder={`Maximum is ${standingPins}`}
           onChange={(e) => setPins(e.target.value)}
         />
       </label>

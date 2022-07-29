@@ -1,32 +1,35 @@
 import { useRef, useState } from "react";
-import BowlingService from "../../services/bowling-service";
+import BowlingService from "../../services/bowling";
 import Scoreboard from "../scoreboard";
 import ScoreInput from "../score-input";
 
 const GameContainer = () => {
   const gameRef = useRef(new BowlingService());
   const game = gameRef.current;
-  const [frame, setFrame] = useState(0);
+
   const [roll, setRoll] = useState(0);
+  const [standingPins, setStandingPins] = useState(10);
   const [score, setScore] = useState(0);
 
   const bowl = (pins) => {
     game.bowl(pins);
-    setRoll(game.rollNum);
-    setFrame(game.frameNum);
-    setScore(game.getGameScore());
+
+    setRoll(game.getRollNumber());
+    setStandingPins(game.getStandingPins());
+    setScore(game.displayScore());
   };
 
   return (
     <div className="game-container">
       <Scoreboard
-        frameScores={game.displayFrames()}
-        frame={frame}
+        playerName={game.getPlayerName()}
+        standingPins={standingPins}
         roll={roll}
-        playerName={game.playerName}
+        regularFrames={game.displayRegularFrames()}
+        finalFrame={game.displayFinalFrame()}
         score={score}
       />
-      <ScoreInput bowl={bowl} />
+      <ScoreInput bowl={bowl} standingPins={standingPins} />
     </div>
   );
 };

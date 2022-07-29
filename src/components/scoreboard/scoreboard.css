@@ -64,12 +64,12 @@
   align-items: center;
 }
 
-.final {
+.total {
   grid-column: span 4;
   border-right: 1px solid black;
 }
 
-.final-score {
+.total-score {
   height: 100%;
   display: flex;
   align-items: center;
